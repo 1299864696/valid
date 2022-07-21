@@ -15,5 +15,6 @@ public class User {
     private String name;
 
     @Min(value = 1, message = "年龄最小为1")
+    @NotNull(message = "年龄不能为空")
     private Integer age;
 }

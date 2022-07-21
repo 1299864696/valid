@@ -1,4 +1,4 @@
-package com.xkt.valid.validator;
+/*package com.xkt.valid.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,4 +26,4 @@ public class ListValidator implements Validator {
         }
     }
 
-}
+}*/
