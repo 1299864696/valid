@@ -1,1 +1,5 @@
-
+spring:
+  # i18 message \u914D\u7F6E\uFF0C\u5BF9\u5E94 MessageSourceProperties \u914D\u7F6E\u7C7B
+  messages:
+    basename: i18n/messages # \u6587\u4EF6\u8DEF\u5F84\u57FA\u7840\u540D
+    encoding: UTF-8 # \u4F7F\u7528 UTF-8 \u7F16\u7801

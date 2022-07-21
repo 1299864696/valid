@@ -2,6 +2,7 @@ package com.xkt.valid.controller;
 
 import com.xkt.valid.dto.User;
 import com.xkt.valid.dto.UserGroup;
+import com.xkt.valid.dto.UserI18n;
 import com.xkt.valid.dto.UserNest;
 import com.xkt.valid.validator.ListValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +100,17 @@ public class UserController {
             // 属性:消息
             System.out.println(constraintViolation.getPropertyPath() + ":" + constraintViolation.getMessage());
         }
+        return "OK";
+    }
+
+    /**
+     *
+     * SpringMVC 通过 Accept-Language 请求头，实现 i18n 国际化。
+     *
+     * 在Header中设置Accept-Language为en/zh/ja
+     */
+    @PostMapping("/i18n")
+    public String i18n(@Validated @RequestBody UserI18n user) {
         return "OK";
     }
 }
