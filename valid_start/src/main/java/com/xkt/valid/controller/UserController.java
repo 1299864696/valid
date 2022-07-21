@@ -1,6 +1,7 @@
 package com.xkt.valid.controller;
 
 import com.xkt.valid.dto.User;
+import com.xkt.valid.dto.UserGroup;
 import com.xkt.valid.dto.UserNest;
 import com.xkt.valid.validator.ListValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,5 +78,10 @@ public class UserController {
         if(binder.getTarget() instanceof List) {
             binder.addValidators(validator);
         }
+    }
+
+    @PostMapping("/userGroup")
+    public String userGroup(@RequestBody @Validated(UserGroup.GroupA.class) UserGroup userGroup) {
+        return "OK";
     }
 }
