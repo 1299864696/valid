@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
+import javax.validation.Validator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author lzx
@@ -24,7 +27,10 @@ import java.util.List;
 @RestController
 public class UserController {
     @Autowired
-    private ListValidator validator;
+    private ListValidator listValidator;
+    @Autowired
+    private Validator validator;
+
     /**
      * 基本校验
      *
@@ -76,12 +82,23 @@ public class UserController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         if(binder.getTarget() instanceof List) {
-            binder.addValidators(validator);
+            binder.addValidators(listValidator);
         }
     }
 
     @PostMapping("/userGroup")
     public String userGroup(@RequestBody @Validated(UserGroup.GroupA.class) UserGroup userGroup) {
+        return "OK";
+    }
+
+    @PostMapping("/manual")
+    public String manual(@RequestBody User user) {
+        Set<ConstraintViolation<User>> result = validator.validate(user);
+        // 打印校验结果
+        for (ConstraintViolation<User> constraintViolation : result) {
+            // 属性:消息
+            System.out.println(constraintViolation.getPropertyPath() + ":" + constraintViolation.getMessage());
+        }
         return "OK";
     }
 }
