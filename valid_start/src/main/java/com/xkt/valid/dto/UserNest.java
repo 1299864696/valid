@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * @author lzx
@@ -21,4 +22,8 @@ public class UserNest {
     @Valid
     @NotNull(message = "teacher不能为null")
     private Teacher teacher;
+
+    @Valid
+    @NotNull(message = "teacher2不能为null")
+    private List<Teacher> teacher2;
 }
